@@ -1,0 +1,1 @@
+declare function SYSCALL_HANDLER(stack as IRQ_STACK ptr) as IRQ_STACK ptr

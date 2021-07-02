@@ -1,0 +1,290 @@
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD obj/0Start.o
+LOAD obj/Interrupts.o
+LOAD obj/main.o
+                0x00100000                . = 0x100000
+
+.text           0x00100000     0xaf18
+                0x00100000                _KERNEL_START = .
+ *(.text)
+ .text          0x00100000       0x20 obj/0Start.o
+                0x0010001c                system_halt
+                0x00100020                _realmode_begin
+                0x00100004                Mboot
+                0x00100020                _realmode_end
+ .text          0x00100020     0x1218 obj/Interrupts.o
+                0x00100e38                _INTERRUPT_TAB@0
+ .text          0x00101238     0x9ce0 obj/main.o
+                0x001092a8                _VFS_READINTEGER@4
+                0x001029a8                __ZN16FATFS_DESCRIPTOR15ABSOLUTE_SECTOREm@8
+                0x00101ac8                _HD_INIT@0
+                0x00104af8                _STRCMPIGNORECASE@8
+                0x00107718                _KTSS_SET_CR3@4
+                0x00106e78                _GET_RTC_UPDATE_IN_PROGRESS_FLAG@0
+                0x00101c48                _HD_WAIT@4
+                0x00106df8                _PIC_INIT@0
+                0x00106248                _CONSOLE_INIT@0
+                0x0010aa08                __ZN4TASKD1Ev
+                0x001049b8                _STRLASTINDEXOF@8
+                0x001069a8                _CONSOLE_WRITE_NUMBER@8
+                0x0010ac58                _SYSCALL_HANDLER@4
+                0x00104728                _STRTRIM@4
+                0x0010a398                _IRQ_ENABLE@4
+                0x00101bc8                _HD_CREATE@20
+                0x00105158                _STRCAT@8
+                0x00101378                _RND_IOCTL@28
+                0x00107bc8                _VMM_KERNEL_AUTOMAP@12
+                0x00107958                _KMM_ALLOCPAGEMULTIPLES@4
+                0x00109e68                __ZN9PIPE_TYPEC1Ev
+                0x00106598                _CONSOLE_PUT_CHAR@4
+                0x00109098                _VFS_WRITESTRING@8
+                0x001068e8                _CONSOLE_SCROLL@0
+                0x0010a958                __ZN4TASKC1Ev
+                0x00104648                _STRLEN@4
+                0x00104688                _STRWLEN@4
+                0x001069f8                _CONSOLE_WRITE_TEXT_AND_DEC@12
+                0x00109968                _BLOCK_DEV_INIT@0
+                0x00103af8                _FATFS_SEEK@16
+                0x00101d48                _HD_WRITE_INTERNAL@16
+                0x00104a88                _STRNCMP@12
+                0x00109398                _VFS_PARENTPATH@4
+                0x001046d8                _STRDLEN@4
+                0x00108b48                _VFS_NODE_EXISTS@4
+                0x00108968                __ZN4SLAB11ISVALIDADDREPv@8
+                0x00109f58                __ZN9PIPE_TYPED1Ev
+                0x00103a08                _FATFS_CLOSE@8
+                0x00106c58                _PMM_STRIPE@8
+                0x001044b8                _SQRT@8
+                0x0010a478                _IRQ_ATTACH_HANDLER@8
+                0x00105e38                _ATOF@4
+                0x00106aa8                _PMM_GET_FREEPAGES_COUNT@0
+                0x00106688                _CONSOLE_BACKSPACE@0
+                0x00105718                _ULONGTOSTR@8
+                0x00104c88                _STRWCMP@8
+                0x00107d08                __ZN10VMMCONTEXT10INITIALIZEEv@4
+                0x001048d8                _STRINDEXOF@8
+                0x0010a328                _TIMER_IRQ@4
+                0x00104058                __ZN10FATFS_FILE5CLOSEEv@4
+                0x00101848                _KBD_HANDLER@4
+                0x001080e8                __ZN10VMMCONTEXT8MAP_PAGEEPvS0_m@16
+                0x00107ee8                __ZN10VMMCONTEXT14FREE_PAGETABLEEPm@8
+                0x00104608                _FSIN@4
+                0x001079e8                _KMM_FREEPAGEMULTIPLES@8
+                0x00107a28                _KMM_ALLOCPAGE@0
+                0x00109018                _VFS_WRITE@12
+                0x00103278                __ZN16FATFS_DESCRIPTOR11SET_CLUSTEREmm@12
+                0x00102a88                __ZN16FATFS_DESCRIPTOR10READ_CHAINEmPh@12
+                0x0010aad8                __ZN4TASK4LOADEP17EXECUTABLE_HEADER@8
+                0x00109148                _VFS_WRITEBYTE@8
+                0x001086f8                __ZN4SLABD1Ev
+                0x00107b78                _VMM_EXIT@0
+                0x00106eb8                _GET_RTC_REGISTER@4
+                0x00101478                _RNDCHAR_READ@8
+                0x00106138                _ATOLHEX@4
+                0x001058f8                _UINTTOSTR@8
+                0x00109738                _DEV_WRITE@16
+                0x00101c88                _HD_READ@16
+                0x001090c8                _VFS_WRITELINE@8
+                0x00108f58                _VFS_READ@12
+                0x00103cd8                _FATFS_UMOUNT@4
+                0x00106218                _ABSOLUTE@4
+                0x00106368                _CONSOLE_PRINT_OK@0
+                0x00102bc8                __ZN16FATFS_DESCRIPTOR17READ_NEXT_CLUSTEREmPh@12
+                0x00101828                _KBD_FLUSH@0
+                0x001082d8                __ZN10VMMCONTEXT10UNMAP_PAGEEPv@8
+                0x00104348                _MAIN@4
+                0x00108698                __ZN12SLABMETADATA11ISVALIDADDREPv@8
+                0x00105ad8                _STRCPY@8
+                0x00107ab8                _VMM_INIT@0
+                0x00103518                _FATFS_OPENREAD@8
+                0x00107c08                _VMM_KERNEL_UNMAP@8
+                0x00107a68                _KMM_FREEPAGE@4
+                0x00104bf8                _STRCMP@8
+                0x00105b38                _memcpy
+                0x001016d8                _KBD_INIT@0
+                0x0010a0d8                __ZN9PIPE_TYPE4READEmPh@12
+                0x001031f8                __ZN16FATFS_DESCRIPTOR17FIND_FREE_CLUSTEREv@4
+                0x00105c78                _memset
+                0x00105f78                _ATOIHEX@4
+                0x001091f8                _VFS_EOF@4
+                0x00106878                _CONSOLE_UPDATE_CURSOR@0
+                0x00109268                _VFS_READSHORT@4
+                0x00104468                _KERNEL_ERROR@8
+                0x001083e8                _GETSMALLESTPOWEROFTWOO@4
+                0x001082f8                __ZN10VMMCONTEXT11UNMAP_RANGEEPvm@12
+                0x00103a48                _FATFS_WRITE@16
+                0x00106318                _CONSOLE_WRITE_LINE@4
+                0x0010a2c8                _INT_HANDLER@4
+                0x001076b8                _KTSS_SET@16
+                0x00105cb8                _MEMSET32@12
+                0x00105b58                _MEMCPY16@12
+                0x00108048                __ZN10VMMCONTEXT7AUTOMAPEPvmmmm@24
+                0x001066f8                _CONSOLE_WRITE@4
+                0x00109678                _DEV_OPEN@12
+                0x001078a8                _LDT_SET_GATE@20
+                0x00107e28                __ZN10VMMCONTEXT13GET_PAGETABLEEm@8
+                0x00109d88                _PIPE_READ@16
+                0x001088d8                __ZN4SLAB4FREEEPv@8
+                0x0010a408                _IRQ_DISABLE@4
+                0x00107f18                __ZN10VMMCONTEXT15FIND_FREE_PAGESEmmm@16
+                0x0010a188                _INTERRUPTSMANAGER_INIT@0
+                0x001012e8                _CON_WRITE@8
+                0x00107878                _GDT_SET_GATE@20
+                0x0010a748                _TASK_EXECUTE@16
+                0x001092e8                _VFS_READLONG@4
+                0x0010a4b8                _IRQ_SEND_ACK@4
+                0x001045c8                _FCOS@4
+                0x00104db8                _STRTOUPPER@4
+                0x0010a498                _IRQ_DETACH_HANDLER@4
+                0x00104578                _DSIN@8
+                0x00105cd8                _ATOI@4
+                0x001067f8                _CONSOLE_CLEAR@0
+                0x001089c8                _VFS_INIT@0
+                0x00108c58                _VFS_MKNOD@40
+                0x00104528                _DCOS@8
+                0x00106ca8                _PMM_ALLOCPAGE@0
+                0x0010a6a8                __ZN17ADDRESSSPACEENTRY8COPYFROMEPvm@12
+                0x00109438                _VFS_FSIZE@4
+                0x00108268                __ZN10VMMCONTEXT9MAP_RANGEEPvS0_S0_m@20
+                0x00109838                _DEVICE_CREATE@12
+                0x00103d38                __ZN10FATFS_FILE5WRITEEmPh@12
+                0x00109c68                _PIPE_OPEN@12
+                0x00109b98                __ZN12BLOCK_DEVICE5WRITEEmmPh@16
+                0x00102598                _FAT_MOUNT@8
+                0x00103ec8                __ZN10FATFS_FILE12LOAD_CLUSTEREv@4
+                0x001015d8                _KBD_IOCTL@28
+                0x00102c48                __ZN16FATFS_DESCRIPTOR13FIND_FATENTRYEm@8
+                0x00105228                _FTOA@12
+                0x00107ba8                _VMM_GET_CURRENT_CONTEXT@0
+                0x001084d8                __ZN12SLABMETADATA6KALLOCEm@8
+                0x00108e38                _VFS_OPEN@8
+                0x00101618                _KBD_READ@8
+                0x001097b8                _DEV_SEEK@16
+                0x00105438                _FLOATTOSTR@4
+                0x0010a5e8                __ZN17ADDRESSSPACEENTRYD1Ev
+                0x00108458                _SLAB_INIT@0
+                0x00101348                _RND_INIT@0
+                0x00107018                _GETTIMEBCD@0
+                0x00104f58                _STRTOLOWER@4
+                0x001062d8                _CONSOLE_SET_BACKGROUND@4
+                0x00106a28                _CONSOLE_WRITE_TEXT_AND_SIZE@12
+                0x00108728                __ZN4SLAB4INITEt@8
+                0x001055a8                _DOUBLETOSTR@8
+                0x00102d58                __ZN16FATFS_DESCRIPTOR4FINDEPhhP9FAT_ENTRY@16
+                0x00106338                _CONSOLE_NEW_LINE@0
+                0x00101268                _CON_IOCTL@28
+                0x00105018                _SUBSTRING@12
+                0x00106d88                _SET_TIMER_FREQ@4
+                0x0010aa58                __ZN4TASK18CREATEADDRESSSPACEEm@8
+                0x00102b28                __ZN16FATFS_DESCRIPTOR11WRITE_CHAINEmPh@12
+                0x00105c98                _MEMSET16@12
+                0x00107d88                __ZN10VMMCONTEXT4SYNCEv@4
+                0x00109f98                __ZN9PIPE_TYPE12CREATEBUFFEREm@8
+                0x001089f8                _VFS_CMP@8
+                0x00106298                _CONSOLE_SET_FOREGROUND@4
+                0x001050e8                _STRENDSWITH@8
+                0x00103f38                __ZN10FATFS_FILE13WRITE_CLUSTEREv@4
+                0x00104d28                _STRREV@4
+                0x00108818                __ZN4SLAB5ALLOCEm@8
+                0x00106ac8                _PMM_INIT@4
+                0x00106ef8                _GETDATEBCD@0
+                0x001059d8                _INTTOSTR@8
+                0x00109c18                _PIPES_INIT@0
+                0x001069c8                _CONSOLE_WRITE_TEXT_AND_HEX@12
+                0x0010ab28                __ZN4TASK8LOAD_ELFEP10ELF_HEADER@8
+                0x00104ee8                _STRTOLOWERFIX@4
+                0x00103458                __ZN16FATFS_DESCRIPTOR13ALLOC_CLUSTEREv@4
+                0x001075b8                _KTSS_INIT@0
+                0x00102398                _STR2FAT@8
+                0x00109608                _DEV_FIND@4
+                0x001085d8                __ZN12SLABMETADATA5KFREEEPv@8
+                0x00105bf8                _MEMCPY64@12
+                0x00101f88                _HD_READ_INTERNAL@16
+                0x00109b18                __ZN12BLOCK_DEVICE4READEmmPh@16
+                0x001036d8                _FATFS_OPENWRITE@12
+                0x00102f38                __ZN16FATFS_DESCRIPTOR10FIND_ENTRYEPamPmS1_S1_h@28
+                0x00106058                _ATOL@4
+                0x00109478                _VFS_INPUT@4
+                0x001021b8                _HD_DETECT@4
+                0x00109178                _VFS_SEEK@12
+                0x00108dc8                _VFS_DUMMY_OPEN@8
+                0x001022d8                _HD_DETECT_PARTITIONS@4
+                0x00109df8                _PIPE_WRITE@16
+                0x001014f8                _KBD_LOADKEYS@0
+                0x00109cf8                _PIPE_CLOSE@8
+                0x00109988                _BLOC_DEV_FIND@4
+                0x00107468                _NEXTRANDOMNUMBER@8
+                0x001057f8                _LONGTOSTR@8
+                0x0010a058                __ZN9PIPE_TYPE5WRITEEmPh@12
+                0x00103dc8                __ZN10FATFS_FILE4READEmPh@12
+                0x00103a88                _FATFS_READ@16
+                0x00105b98                _MEMCPY512@12
+                0x001012b8                _CON_READ@8
+                0x00104e78                _STRTOUPPERFIX@4
+                0x001034b8                __ZN16FATFS_DESCRIPTOR12FREE_CLUSTEREm@8
+                0x00106d18                _PMM_FREEPAGE@4
+                0x00105b78                _MEMCPY32@12
+                0x00109238                _VFS_READBYTE@4
+                0x00107738                _GDT_INIT@0
+                0x00109338                _VFS_FILENAME@4
+                0x001099f8                _BLOCK_DEVICE_CREATE@16
+                0x00108348                __ZN10VMMCONTEXT7RESOLVEEPv@8
+                0x00107c38                _VMM_INIT_LOCAL@0
+                0x00108de8                _VFS_FILE_EXISTS@4
+                0x0010a4d8                __ZN17ADDRESSSPACEENTRY4SBRKEm@8
+                0x0010a368                _TIMER_DELAY@4
+                0x00101438                _RNDCHAR_IOCTL@28
+                0x001073e8                _PIC_IS_SPURIOUS@4
+                0x00106e58                _MASK_IRQ@0
+                0x00103c48                _FATFS_OPEN@12
+                0x00106e38                _UNMASK_IRQ@0
+                0x0010a268                _SET_IDT@12
+                0x001029e8                __ZN16FATFS_DESCRIPTOR9READ_ROOTEP9FAT_ENTRY@8
+                0x00102a38                __ZN16FATFS_DESCRIPTOR10WRITE_ROOTEP9FAT_ENTRY@8
+                0x00107dd8                __ZN10VMMCONTEXT8ACTIVATEEv@4
+                0x00101238                _CON_INIT@0
+                0x001013b8                _RND_READ@8
+                0x00108ba8                _VFS_UMOUNT@4
+                0x001095c8                _DEV_INIT@0
+                0x00101738                _KBD_PUTCHAR@4
+                0x00107c98                __ZN10VMMCONTEXTD1Ev
+                0x00108ed8                _VFS_CLOSE@4
+                0x001042f8                _DUMMY_READ@16
+                0x00101ce8                _HD_WRITE@16
+                0x001070f8                _READ_RTC@0
+                0x001096a8                _DEV_READ@16
+                0x001048b8                _STRCONTAINS@8
+                0x00108ad8                _VFS_FIND_NODE@4
+
+.rodata
+ *(.rodata)
+
+.data           0x0010b000      0x760
+ *(.data)
+ .data          0x0010b000      0x760 obj/main.o
+
+.ctors          0x0010b760        0x4
+ .ctors         0x0010b760        0x4 obj/main.o
+
+.dtors          0x0010b764        0x4
+ .dtors         0x0010b764        0x4 obj/main.o
+
+.bss            0x0010b768   0x202ad8
+                0x0010b768                SBSS = .
+ *(COMMON)
+ *(.bss)
+ .bss           0x0010b768   0x100000 obj/0Start.o
+ .bss           0x0020b768   0x102ad8 obj/main.o
+                0x0030e240                EBSS = .
+                0x0030e240                _KERNEL_END = .
+OUTPUT(bin/kernel.elf elf32-i386)
+
+.rel.dyn        0x0030e240        0x0
+ .rel.text      0x00000000        0x0 obj/0Start.o
